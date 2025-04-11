@@ -9,8 +9,12 @@ dotenv.config();
 // Create an Express app
 const app = express();
 
-// Middleware
-app.use(cors());  // This enables CORS for all requests
+// Updated CORS configuration to allow requests from Vercel and localhost
+app.use(cors({
+  origin: ['https://volunteer-connect-sepia.vercel.app', 'http://localhost:3000'],
+  credentials: true
+}));
+
 app.use(express.json()); // This allows us to parse JSON bodies from requests
 
 // MongoDB connection
